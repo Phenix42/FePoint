@@ -1,0 +1,2 @@
+import{a as e,n as t}from"./jsx-runtime-B-hcVAMW.js";import{o as n}from"./index-w8g9ftev.js";var r=e(t(),1),i=e=>{let t=n(e=>e.addRecent),i=e?.type,a=e?.title,o=e?.description,s=e?.url;(0,r.useEffect)(()=>{i&&a&&o&&s&&t({type:i,title:a,description:o,url:s})},[t,o,a,i,s])};export{i as t};
+//# sourceMappingURL=useRecentlyViewed-9e0N_z6_.js.map
