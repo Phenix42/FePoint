@@ -1,6 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 
-const siteUrl = process.env.VITE_SITE_URL ?? 'https://fepoint.example.com';
+const siteUrl = new URL(process.env.VITE_SITE_URL ?? 'https://fepoint.example.com');
+const siteBasePath = siteUrl.pathname.replace(/\/$/, '');
 const routes = [
   '/',
   '/roadmap',
@@ -49,7 +50,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 ${routes
   .map(
     (route) =>
-      `  <url><loc>${new URL(route, siteUrl).toString()}</loc><changefreq>weekly</changefreq></url>`,
+      `  <url><loc>${new URL(`${siteBasePath}${route}`, siteUrl.origin).toString()}</loc><changefreq>weekly</changefreq></url>`,
   )
   .join('\n')}
 </urlset>
