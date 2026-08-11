@@ -178,7 +178,7 @@ export function Header() {
             </button>
             <ThemeToggle />
             <Link
-              className="hidden h-9 items-center gap-2 rounded-xl bg-brand-600 px-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-500 md:flex dark:text-slate-950"
+              className="hidden h-9 items-center gap-2 rounded-xl bg-brand-600 px-3 text-xs font-bold text-[var(--bg)] shadow-sm transition hover:bg-brand-500 md:flex"
               to="/completed"
             >
               <BarChart3 className="size-4" /> My progress

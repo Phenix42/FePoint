@@ -6,49 +6,75 @@
   --font-sans:
     'Inter', 'SF Pro Display', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'SFMono-Regular', 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
-  --color-brand-50: #fff9db;
-  --color-brand-100: #fff1a8;
-  --color-brand-200: #ffe56b;
-  --color-brand-300: #ffd936;
-  --color-brand-400: #f8c600;
-  --color-brand-500: #b88600;
-  --color-brand-600: #936b00;
-  --color-brand-700: #745400;
-  --color-brand-800: #5c4300;
-  --color-brand-900: #493600;
+  --color-brand-50: #fafafa;
+  --color-brand-100: #f5f5f5;
+  --color-brand-200: #e5e5e5;
+  --color-brand-300: #d4d4d4;
+  --color-brand-400: #a3a3a3;
+  --color-brand-500: #171717;
+  --color-brand-600: #0a0a0a;
+  --color-brand-700: #000000;
+  --color-brand-800: #000000;
+  --color-brand-900: #000000;
+
+  /* Keep every semantic Tailwind accent inside the monochrome system. */
+  --color-red-400: #a3a3a3;
+  --color-red-500: #737373;
+  --color-orange-500: #737373;
+  --color-amber-300: #d4d4d4;
+  --color-amber-400: #a3a3a3;
+  --color-amber-500: #737373;
+  --color-amber-600: #525252;
+  --color-emerald-400: #a3a3a3;
+  --color-emerald-500: #737373;
+  --color-emerald-600: #525252;
+  --color-blue-500: #737373;
+  --color-cyan-400: #a3a3a3;
+  --color-cyan-500: #737373;
+  --color-cyan-600: #525252;
+  --color-violet-400: #a3a3a3;
+  --color-violet-500: #737373;
+  --color-violet-600: #525252;
+  --color-slate-200: #e5e5e5;
+  --color-slate-300: #d4d4d4;
+  --color-slate-400: #a3a3a3;
+  --color-slate-500: #737373;
+  --color-slate-700: #404040;
+  --color-slate-800: #262626;
+  --color-slate-950: #0a0a0a;
 }
 
 :root {
   color-scheme: light;
-  --bg: #f7f9fc;
+  --bg: #f5f5f5;
   --surface: #ffffff;
-  --surface-muted: #f1f5f9;
+  --surface-muted: #eeeeee;
   --surface-raised: rgba(255, 255, 255, 0.88);
-  --border: #dfe6ef;
-  --border-strong: #c9d5e4;
-  --text: #101828;
-  --text-soft: #526177;
-  --text-faint: #748198;
-  --code: #0a1020;
-  --shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+  --border: #dedede;
+  --border-strong: #bdbdbd;
+  --text: #050505;
+  --text-soft: #404040;
+  --text-faint: #6b6b6b;
+  --code: #080808;
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
 }
 
 .dark {
   color-scheme: dark;
-  --color-brand-400: #ffe45f;
-  --color-brand-500: #ffd400;
-  --color-brand-600: #f2c300;
-  --color-brand-700: #d5aa00;
-  --bg: #070d18;
-  --surface: #0d1626;
-  --surface-muted: #111d30;
-  --surface-raised: rgba(13, 22, 38, 0.9);
-  --border: #1e2c42;
-  --border-strong: #30415b;
-  --text: #f1f5f9;
-  --text-soft: #9eacc0;
-  --text-faint: #75849c;
-  --code: #050914;
+  --color-brand-400: #d4d4d4;
+  --color-brand-500: #fafafa;
+  --color-brand-600: #ffffff;
+  --color-brand-700: #ffffff;
+  --bg: #050505;
+  --surface: #0c0c0c;
+  --surface-muted: #171717;
+  --surface-raised: rgba(12, 12, 12, 0.9);
+  --border: #292929;
+  --border-strong: #444444;
+  --text: #fafafa;
+  --text-soft: #c5c5c5;
+  --text-faint: #909090;
+  --code: #000000;
   --shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
 }
 
@@ -66,8 +92,17 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    radial-gradient(circle at 10% -10%, rgba(255, 212, 0, 0.1), transparent 28rem),
-    radial-gradient(circle at 90% 20%, rgba(139, 92, 246, 0.07), transparent 26rem), var(--bg);
+    radial-gradient(
+      circle at 10% -10%,
+      color-mix(in srgb, var(--text) 6%, transparent),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      color-mix(in srgb, var(--text) 4%, transparent),
+      transparent 26rem
+    ),
+    var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   font-feature-settings: 'ss01', 'cv02', 'cv03';
@@ -89,12 +124,13 @@ button:not(:disabled),
 }
 
 :focus-visible {
-  outline: 3px solid rgba(255, 204, 0, 0.6);
+  outline: 3px solid color-mix(in srgb, var(--text) 55%, transparent);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: rgba(255, 204, 0, 0.3);
+  background: var(--text);
+  color: var(--bg);
 }
 
 .page-shell {
@@ -115,8 +151,16 @@ button:not(:disabled),
 .home-hero {
   background:
     linear-gradient(115deg, color-mix(in srgb, var(--surface) 82%, transparent), transparent 66%),
-    radial-gradient(circle at 78% 28%, rgba(255, 212, 0, 0.13), transparent 22rem),
-    radial-gradient(circle at 92% 86%, rgba(34, 211, 238, 0.07), transparent 20rem);
+    radial-gradient(
+      circle at 78% 28%,
+      color-mix(in srgb, var(--text) 7%, transparent),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 92% 86%,
+      color-mix(in srgb, var(--text) 4%, transparent),
+      transparent 20rem
+    );
 }
 
 .progress-ring {
@@ -130,9 +174,9 @@ button:not(:disabled),
 .simple-cta {
   position: relative;
   background:
-    radial-gradient(circle at 85% 0%, rgba(255, 212, 0, 0.16), transparent 20rem),
-    linear-gradient(125deg, #0d1729, #080e1a 72%);
-  border-color: rgba(255, 212, 0, 0.16);
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.12), transparent 20rem),
+    linear-gradient(125deg, #171717, #000000 72%);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .simple-cta::before {
@@ -154,12 +198,7 @@ button:not(:disabled),
 }
 
 .gradient-text {
-  background: linear-gradient(
-    105deg,
-    var(--color-brand-600) 4%,
-    var(--color-brand-400) 55%,
-    #f59e0b 94%
-  );
+  background: linear-gradient(105deg, var(--text) 4%, var(--text-faint) 55%, var(--text) 94%);
   background-clip: text;
   color: transparent;
 }

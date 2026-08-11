@@ -16,7 +16,7 @@ export function DsaNav() {
     >
       {links.map((link) => (
         <Link
-          className={`shrink-0 rounded-xl px-4 py-2 text-xs font-bold transition ${location.pathname === link.href ? 'bg-brand-500 text-slate-950' : 'text-[var(--text-soft)] hover:bg-[var(--surface-muted)]'}`}
+          className={`shrink-0 rounded-xl px-4 py-2 text-xs font-bold transition ${location.pathname === link.href ? 'bg-brand-500 text-[var(--bg)]' : 'text-[var(--text-soft)] hover:bg-[var(--surface-muted)]'}`}
           key={link.href}
           to={link.href}
         >

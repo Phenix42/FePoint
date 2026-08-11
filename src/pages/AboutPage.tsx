@@ -50,13 +50,13 @@ export default function AboutPage() {
           </>
         }
         aside={
-          <span className="flex size-44 items-center justify-center justify-self-start overflow-hidden rounded-3xl border border-brand-500/20 bg-black shadow-2xl shadow-brand-500/10">
+          <span className="flex h-44 w-full max-w-80 items-center justify-center justify-self-start overflow-hidden rounded-3xl border bg-white p-3 shadow-2xl shadow-black/10">
             <img
               alt="FEPoint logo"
-              className="size-44 object-cover"
+              className="h-full w-full object-contain"
               height={176}
               src={siteConfig.logoUrl}
-              width={176}
+              width={320}
             />
           </span>
         }

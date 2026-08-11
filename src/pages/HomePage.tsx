@@ -162,7 +162,7 @@ export default function HomePage() {
               <Sparkles className="size-3.5" /> Free · No signup · Progress stays local
             </span>
             <h1 className="mt-5 max-w-3xl text-4xl font-black tracking-[-0.055em] sm:text-5xl lg:text-[4rem] lg:leading-[1.02]">
-              Learn frontend......
+              Learn frontend.
               <span className="block text-brand-600 dark:text-brand-500">Prepare with a plan.</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-soft)] sm:text-lg sm:leading-8">
@@ -355,7 +355,7 @@ export default function HomePage() {
                           done
                             ? 'border-emerald-500 bg-emerald-500 text-white'
                             : active
-                              ? 'border-brand-500 bg-brand-500 text-slate-950'
+                              ? 'border-brand-500 bg-brand-500 text-[var(--bg)]'
                               : 'bg-[var(--surface)] text-[var(--text-faint)]',
                         )}
                       >

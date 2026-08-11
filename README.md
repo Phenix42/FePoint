@@ -161,7 +161,7 @@ Change the name, description, statistics, navigation, URLs, and contact address 
 src/config/site.ts
 ```
 
-The supplied FEPoint artwork is stored as `public/fepoint-logo.png`, with a header-ready crop in `public/fepoint-icon.png` and a browser icon in `public/favicon.png`. The responsive brand component lives in `src/components/layout/Logo.tsx`.
+The monochrome FEPoint artwork is stored as scalable SVG files in `public/fepoint-logo.svg`, `public/fepoint-icon.svg`, and `public/favicon.svg`. The responsive bracketed wordmark lives in `src/components/layout/Logo.tsx`.
 
 ## Adding content
 

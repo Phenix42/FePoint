@@ -4,8 +4,8 @@ import type { CodeExample } from '@/types/content';
 
 export function CodeBlock({ code, language, title, explanation }: CodeExample) {
   return (
-    <figure className="my-7 overflow-hidden rounded-2xl border border-slate-800 bg-[#060a13] shadow-2xl shadow-black/10">
-      <div className="flex items-center justify-between border-b border-slate-800 bg-[#0a1020] px-3 py-2">
+    <figure className="my-7 overflow-hidden rounded-2xl border border-slate-800 bg-[#060606] shadow-2xl shadow-black/10">
+      <div className="flex items-center justify-between border-b border-slate-800 bg-[#0a0a0a] px-3 py-2">
         <div className="flex min-w-0 items-center gap-3">
           <span className="flex gap-1.5" aria-hidden="true">
             <i className="size-2.5 rounded-full bg-red-400/70" />

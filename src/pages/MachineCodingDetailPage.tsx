@@ -115,7 +115,7 @@ export default function MachineCodingDetailPage() {
             <Timer className="size-4" /> {displayTime}
             <button
               aria-label={timerActive ? 'Pause timer' : 'Start timer'}
-              className="grid size-7 place-items-center rounded-lg bg-brand-500 text-white"
+              className="grid size-7 place-items-center rounded-lg bg-brand-500 text-[var(--bg)]"
               onClick={toggleTimer}
               type="button"
             >

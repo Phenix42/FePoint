@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" role="img" aria-labelledby="title description">
+  <title id="title">FePoint</title>
+  <desc id="description">FePoint, Front End Tutorial Point</desc>
+  <rect width="1000" height="430" fill="#fff" />
+  <g fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="24">
+    <path d="M100 70H76C58 70 48 81 48 101V282C48 302 58 313 76 313H100" />
+    <path d="M900 70H924C942 70 952 81 952 101V282C952 302 942 313 924 313H900" />
+  </g>
+  <text x="137" y="276" fill="none" stroke="#000" stroke-width="3" font-family="Arial, Helvetica, sans-serif" font-size="228" font-weight="800" letter-spacing="-16">Fe</text>
+  <text x="395" y="276" fill="#000" font-family="Arial, Helvetica, sans-serif" font-size="228" font-weight="800" letter-spacing="-16">Point</text>
+  <g fill="#000">
+    <rect x="83" y="358" width="96" height="6" />
+    <rect x="821" y="358" width="96" height="6" />
+    <text x="220" y="375" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" letter-spacing="5.5">FRONT END TUTORIAL POINT</text>
+  </g>
+</svg>

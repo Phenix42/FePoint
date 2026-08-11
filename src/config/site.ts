@@ -9,8 +9,8 @@ export const siteConfig = {
   url: environment.VITE_SITE_URL ?? 'https://fepoint.example.com',
   githubUrl: environment.VITE_GITHUB_URL ?? 'https://github.com/your-org/fepoint',
   email: 'hello@fepoint.dev',
-  logoUrl: assetBase + 'fepoint-logo.png',
-  iconUrl: assetBase + 'fepoint-icon.png',
+  logoUrl: assetBase + 'fepoint-logo.svg',
+  iconUrl: assetBase + 'fepoint-icon.svg',
   stats: [
     { value: '640+', label: 'Tutorials' },
     { value: '1,000+', label: 'Practice questions' },

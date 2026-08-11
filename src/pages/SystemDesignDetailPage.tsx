@@ -131,7 +131,7 @@ export default function SystemDesignDetailPage() {
             </DesignSection>
             <DesignSection number="04" title="Data and API contracts">
               <BulletPanel title="Data models" items={caseStudy.dataModels} />
-              <div className="mt-4 rounded-2xl bg-[#060a13] p-5 font-mono text-sm leading-8 text-slate-300">
+              <div className="mt-4 rounded-2xl bg-[#060606] p-5 font-mono text-sm leading-8 text-slate-300">
                 {caseStudy.apiContracts.map((contract) => (
                   <p key={contract}>{contract}</p>
                 ))}

@@ -18,7 +18,7 @@ export const buttonStyles = ({
     'inline-flex shrink-0 items-center justify-center gap-2 rounded-xl font-semibold transition duration-200 disabled:pointer-events-none disabled:opacity-50',
     'focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-500/20',
     {
-      'bg-brand-600 text-white shadow-[0_10px_28px_rgba(255,204,0,.2)] hover:bg-brand-500 dark:text-slate-950':
+      'bg-brand-600 text-[var(--bg)] shadow-[0_10px_28px_rgba(0,0,0,.16)] hover:bg-brand-500':
         variant === 'primary',
       'border bg-[var(--surface)] text-[var(--text)] hover:border-brand-500/50 hover:bg-brand-500/5':
         variant === 'secondary',

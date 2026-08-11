@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="FePoint">
+  <rect width="128" height="128" rx="22" fill="#fff" />
+  <g fill="none" stroke="#000" stroke-linecap="square" stroke-width="8">
+    <path d="M29 21H22C16 21 13 25 13 31V97C13 103 16 107 22 107H29" />
+    <path d="M99 21H106C112 21 115 25 115 31V97C115 103 112 107 106 107H99" />
+  </g>
+  <text x="34" y="87" fill="none" stroke="#000" stroke-width="2" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="800" letter-spacing="-6">Fe</text>
+</svg>

@@ -37,7 +37,7 @@ export function AppLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <a
-        className="fixed left-3 top-2 z-[100] -translate-y-20 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition focus:translate-y-0"
+        className="fixed left-3 top-2 z-[100] -translate-y-20 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-[var(--bg)] transition focus:translate-y-0"
         href="#main-content"
       >
         Skip to content

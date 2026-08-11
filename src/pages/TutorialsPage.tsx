@@ -67,7 +67,7 @@ export default function TutorialsPage() {
             className={cn(
               'shrink-0 rounded-full border px-4 py-2 text-xs font-bold transition',
               !activeCategory
-                ? 'border-brand-500 bg-brand-500 text-white'
+                ? 'border-brand-500 bg-brand-500 text-[var(--bg)]'
                 : 'bg-[var(--surface)] text-[var(--text-soft)] hover:border-brand-500/40',
             )}
             to="/tutorials"
@@ -79,7 +79,7 @@ export default function TutorialsPage() {
               className={cn(
                 'shrink-0 rounded-full border px-4 py-2 text-xs font-bold transition',
                 activeCategory?.slug === item.slug
-                  ? 'border-brand-500 bg-brand-500 text-white'
+                  ? 'border-brand-500 bg-brand-500 text-[var(--bg)]'
                   : 'bg-[var(--surface)] text-[var(--text-soft)] hover:border-brand-500/40',
               )}
               key={item.slug}

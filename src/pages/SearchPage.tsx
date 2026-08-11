@@ -86,7 +86,7 @@ export default function SearchPage() {
               className={cn(
                 'shrink-0 rounded-full border px-3.5 py-2 text-xs font-bold transition',
                 type === filter.value
-                  ? 'border-brand-500 bg-brand-500 text-white'
+                  ? 'border-brand-500 bg-brand-500 text-[var(--bg)]'
                   : 'bg-[var(--surface)] text-[var(--text-soft)] hover:border-brand-500/40',
               )}
               key={filter.value}

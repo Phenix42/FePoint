@@ -10,10 +10,7 @@ export function CompanyCard({ company }: { company: Company }) {
     <article className="surface-card group relative flex h-full flex-col rounded-2xl p-5 transition hover:-translate-y-0.5 hover:border-brand-500/35 hover:shadow-xl hover:shadow-brand-500/5">
       <Link aria-label={company.name + ' interview guide'} className="absolute inset-0" to={href} />
       <div className="relative flex items-center justify-between pointer-events-none">
-        <span
-          className="grid size-12 place-items-center rounded-2xl text-sm font-black text-white shadow-lg"
-          style={{ backgroundColor: company.color }}
-        >
+        <span className="grid size-12 place-items-center rounded-2xl bg-[var(--text)] text-sm font-black text-[var(--bg)] shadow-lg">
           {company.monogram}
         </span>
         <BookmarkButton

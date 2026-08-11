@@ -66,10 +66,7 @@ export default function CompanyDetailPage() {
         <header className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <div className="flex items-center gap-4">
-              <span
-                className="grid size-16 place-items-center rounded-2xl text-xl font-black text-white shadow-xl"
-                style={{ backgroundColor: company.color }}
-              >
+              <span className="grid size-16 place-items-center rounded-2xl bg-[var(--text)] text-xl font-black text-[var(--bg)] shadow-xl">
                 {company.monogram}
               </span>
               <div>

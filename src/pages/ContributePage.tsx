@@ -78,7 +78,7 @@ export default function ContributePage() {
               </li>
             ))}
           </ol>
-          <div className="mt-10 rounded-2xl bg-[#060a13] p-5 font-mono text-sm leading-7 text-slate-300">
+          <div className="mt-10 rounded-2xl bg-[#060606] p-5 font-mono text-sm leading-7 text-slate-300">
             <p className="text-slate-500"># local verification</p>
             <p>npm install</p>
             <p>npm run lint</p>
