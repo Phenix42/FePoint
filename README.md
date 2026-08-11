@@ -68,7 +68,6 @@ npm run validate:content # Validate collection counts, links, IDs, and rich fiel
 npm run format           # Format source and configuration files
 npm run format:check     # Check formatting without changing files
 npm run generate:sitemap # Regenerate public/sitemap.xml
-npm run deploy           # Build and publish to GitHub Pages
 ```
 
 ## Environment variables
@@ -213,11 +212,9 @@ Import the repository. `netlify.toml` configures the build, publish directory, a
 
 ### GitHub Pages
 
-1. In the repository's **Settings → Pages**, choose **Deploy from a branch**.
-2. Select the `gh-pages` branch and the `/ (root)` folder.
-3. Run `npm run deploy` whenever you want to publish a new version.
+GitHub Actions automatically builds and deploys the site whenever a commit is pushed to `main`. The **Deploy GitHub Pages** workflow can also be started manually from the repository's Actions tab.
 
-The `predeploy` script builds with the `/FePoint/` repository base path and production URL, then `gh-pages` publishes `dist`. The post-build script creates `dist/404.html` so direct SPA routes can recover on GitHub Pages. React Router also receives Vite's base path.
+The workflow reads the production URL and repository base path from GitHub Pages, then uploads `dist`. The post-build script creates `dist/404.html` so direct SPA routes can recover on GitHub Pages. React Router also receives Vite's base path.
 
 ## Privacy and security notes
 
