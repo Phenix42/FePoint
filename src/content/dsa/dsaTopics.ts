@@ -1,0 +1,254 @@
+import type { DsaTopic } from '@/types/content';
+
+interface TopicSeed {
+  slug: string;
+  title: string;
+  kind: DsaTopic['kind'];
+  simple: string;
+  analogy: string;
+  operations: string[];
+  time: string;
+  space: string;
+  js: string;
+  ts: string;
+  related: string[];
+}
+
+const seeds: TopicSeed[] = [
+  {
+    slug: 'big-o',
+    title: 'Big O and complexity',
+    kind: 'fundamental',
+    simple: 'A shared language for how an algorithm’s work or memory grows with its input.',
+    analogy:
+      'Estimate whether doubling a guest list doubles the work or makes every guest meet every other guest.',
+    operations: [
+      'Ignore fixed multipliers when comparing growth.',
+      'Separate time from auxiliary memory.',
+      'State average and worst case when they differ.',
+    ],
+    time: 'O(1) to O(2ⁿ)',
+    space: 'Depends on stored state',
+    js: 'const constant = values => values[0];\nconst linear = values => values.map(value => value * 2);',
+    ts: 'const constant = <T>(values: readonly T[]): T | undefined => values[0];',
+    related: ['recursion', 'arrays'],
+  },
+  {
+    slug: 'recursion',
+    title: 'Recursion',
+    kind: 'fundamental',
+    simple: 'Solve one problem by solving a smaller version until a stopping case is reached.',
+    analogy:
+      'Open nested boxes using the same instruction until the smallest box has no box inside.',
+    operations: [
+      'Define the base case first.',
+      'Make every call move toward it.',
+      'Understand call-stack memory.',
+    ],
+    time: 'Problem dependent',
+    space: 'O(depth)',
+    js: 'function sum(values, index = 0) {\n  return index === values.length ? 0 : values[index] + sum(values, index + 1);\n}',
+    ts: 'function sum(values: readonly number[], index = 0): number {\n  return index === values.length ? 0 : values[index]! + sum(values, index + 1);\n}',
+    related: ['big-o', 'trees'],
+  },
+  {
+    slug: 'arrays',
+    title: 'Arrays and strings',
+    kind: 'data-structure',
+    simple:
+      'Ordered values with fast position-based access and expensive shifts near the beginning.',
+    analogy: 'A numbered row of lockers lets you open locker 40 directly when you know its number.',
+    operations: [
+      'Read by index: O(1).',
+      'Search unsorted values: O(n).',
+      'Insert near the front: O(n).',
+    ],
+    time: 'O(1) access; O(n) search',
+    space: 'O(n)',
+    js: 'const updated = [...items.slice(0, index), value, ...items.slice(index)];',
+    ts: 'const updated = <T>(items: readonly T[], index: number, value: T): T[] => [...items.slice(0, index), value, ...items.slice(index)];',
+    related: ['hash-maps', 'stacks-and-queues'],
+  },
+  {
+    slug: 'hash-maps',
+    title: 'Hash maps and sets',
+    kind: 'data-structure',
+    simple: 'Keyed storage designed for fast average lookup, membership, and counting.',
+    analogy:
+      'Labelled drawers let you open the right drawer without checking every drawer before it.',
+    operations: [
+      'Set or get a key: O(1) average.',
+      'Use Set for membership.',
+      'Choose stable keys that model identity.',
+    ],
+    time: 'O(1) average operations',
+    space: 'O(n)',
+    js: 'const byId = new Map(items.map(item => [item.id, item]));\nconst unique = new Set(values);',
+    ts: 'const indexById = <T extends { id: string }>(items: readonly T[]) => new Map(items.map(item => [item.id, item]));',
+    related: ['arrays', 'tries'],
+  },
+  {
+    slug: 'stacks-and-queues',
+    title: 'Stacks and queues',
+    kind: 'data-structure',
+    simple: 'Stacks serve the newest item first; queues serve the oldest item first.',
+    analogy: 'A plate stack is last-in first-out, while a checkout line is first-in first-out.',
+    operations: [
+      'Stack push/pop: O(1).',
+      'Queue enqueue/dequeue: O(1) with a cursor or deque.',
+      'Use them to control processing order.',
+    ],
+    time: 'O(1) end operations',
+    space: 'O(n)',
+    js: 'const stack = []; stack.push(value); stack.pop();\nconst queue = []; let cursor = 0; queue.push(value); queue[cursor++];',
+    ts: 'const stack: number[] = [];\nconst queue: number[] = []; let cursor = 0;',
+    related: ['arrays', 'graphs'],
+  },
+  {
+    slug: 'linked-lists',
+    title: 'Linked lists',
+    kind: 'data-structure',
+    simple:
+      'Nodes store values and references to neighbouring nodes instead of using contiguous positions.',
+    analogy:
+      'A treasure hunt note tells you where the next note is; you must follow the chain from the start.',
+    operations: [
+      'Insert after a known node: O(1).',
+      'Find by position: O(n).',
+      'Save the next pointer before rewiring.',
+    ],
+    time: 'O(1) local update; O(n) search',
+    space: 'O(n)',
+    js: 'const node = { value: 1, next: null };\nnode.next = { value: 2, next: null };',
+    ts: 'interface ListNode<T> { value: T; next: ListNode<T> | null }',
+    related: ['arrays', 'stacks-and-queues'],
+  },
+  {
+    slug: 'trees',
+    title: 'Trees',
+    kind: 'data-structure',
+    simple: 'Hierarchical nodes where each child has a path from a root.',
+    analogy: 'Folders contain files and more folders, forming branches from one root folder.',
+    operations: [
+      'DFS explores branches.',
+      'BFS explores levels.',
+      'Balanced search trees support logarithmic lookup.',
+    ],
+    time: 'O(n) traversal',
+    space: 'O(height) DFS',
+    js: 'function visit(node) {\n  if (!node) return;\n  visit(node.left); console.log(node.value); visit(node.right);\n}',
+    ts: 'interface TreeNode<T> { value: T; children: TreeNode<T>[] }',
+    related: ['graphs', 'recursion'],
+  },
+  {
+    slug: 'graphs',
+    title: 'Graphs',
+    kind: 'data-structure',
+    simple:
+      'A collection of items connected by relationships, with no requirement for one hierarchy.',
+    analogy: 'A transit map connects stations by routes; many valid paths and cycles may exist.',
+    operations: [
+      'Represent neighbours with adjacency lists.',
+      'Mark visited nodes.',
+      'Use BFS for unweighted shortest paths.',
+    ],
+    time: 'O(vertices + edges)',
+    space: 'O(vertices + edges)',
+    js: 'const graph = new Map([\n  ["home", ["search", "profile"]],\n  ["search", ["result"]],\n]);',
+    ts: 'const graph = new Map<string, string[]>();\ngraph.set("home", ["search", "profile"]);',
+    related: ['trees', 'stacks-and-queues'],
+  },
+  {
+    slug: 'tries',
+    title: 'Tries',
+    kind: 'data-structure',
+    simple: 'A tree whose path represents a string prefix, allowing prefixes to share work.',
+    analogy: 'A dictionary index branches by first letter, then second letter, and so on.',
+    operations: [
+      'Insert in O(word length).',
+      'Prefix lookup in O(prefix length).',
+      'Limit stored suggestions to control memory.',
+    ],
+    time: 'O(k) per word or prefix',
+    space: 'O(total characters)',
+    js: 'const root = { children: new Map(), terminal: false };',
+    ts: 'interface TrieNode { children: Map<string, TrieNode>; terminal: boolean }',
+    related: ['trees', 'hash-maps'],
+  },
+  {
+    slug: 'sorting',
+    title: 'Sorting',
+    kind: 'algorithm',
+    simple: 'Rearrange values into an order that makes later scanning and searching easier.',
+    analogy:
+      'Alphabetising folders takes work once but makes repeated lookup and grouping simpler.',
+    operations: [
+      'Know the comparator contract.',
+      'Do not assume Array.sort is numeric by default.',
+      'Account for O(n log n) in complexity.',
+    ],
+    time: 'O(n log n) general comparison sort',
+    space: 'Implementation dependent',
+    js: 'const sorted = [...values].sort((a, b) => a - b);',
+    ts: 'const sorted = (values: readonly number[]): number[] => [...values].sort((a, b) => a - b);',
+    related: ['binary-search', 'arrays'],
+  },
+  {
+    slug: 'binary-search',
+    title: 'Binary search',
+    kind: 'algorithm',
+    simple: 'Find a target or boundary by discarding half of a monotonic search space every step.',
+    analogy:
+      'Open a dictionary near the middle and choose the half that can still contain the word.',
+    operations: [
+      'Define boundary meaning.',
+      'Use a safe midpoint.',
+      'Prove which half cannot contain the answer.',
+    ],
+    time: 'O(log n)',
+    space: 'O(1) iterative',
+    js: 'function lowerBound(values, target) {\n  let left = 0, right = values.length;\n  while (left < right) { const mid = left + Math.floor((right-left)/2); values[mid] < target ? left = mid + 1 : right = mid; }\n  return left;\n}',
+    ts: 'function lowerBound(values: readonly number[], target: number): number {\n  let left = 0, right = values.length;\n  while (left < right) { const mid = left + Math.floor((right-left)/2); values[mid]! < target ? left = mid + 1 : right = mid; }\n  return left;\n}',
+    related: ['sorting', 'big-o'],
+  },
+  {
+    slug: 'traversal',
+    title: 'DFS and BFS traversal',
+    kind: 'algorithm',
+    simple: 'Systematically visit tree or graph data either branch-first or level-first.',
+    analogy:
+      'Explore a maze down one corridor with DFS, or expand in equal-distance rings with BFS.',
+    operations: [
+      'Choose stack/recursion for DFS.',
+      'Choose a queue for BFS.',
+      'Track visited nodes in graphs.',
+    ],
+    time: 'O(vertices + edges)',
+    space: 'O(vertices)',
+    js: 'function dfs(node, seen = new Set()) {\n  if (seen.has(node)) return; seen.add(node);\n  for (const next of node.neighbors) dfs(next, seen);\n}',
+    ts: 'function dfs<T extends { neighbors: T[] }>(node: T, seen = new Set<T>()): void {\n  if (seen.has(node)) return; seen.add(node);\n  for (const next of node.neighbors) dfs(next, seen);\n}',
+    related: ['graphs', 'trees'],
+  },
+];
+
+export const dsaTopics: DsaTopic[] = seeds.map((seed, index) => ({
+  id: `dsa-topic-${String(index + 1).padStart(2, '0')}`,
+  slug: seed.slug,
+  title: seed.title,
+  kind: seed.kind,
+  description: `${seed.title} explained from a frontend developer's perspective with operations, complexity, and practical code.`,
+  simpleExplanation: seed.simple,
+  analogy: seed.analogy,
+  keyOperations: seed.operations,
+  complexity: {
+    time: seed.time,
+    space: seed.space,
+    explanation: `Typical operations use ${seed.time} time and ${seed.space} space; exact bounds depend on the chosen operation and input representation.`,
+  },
+  javascriptExample: seed.js,
+  typescriptExample: seed.ts,
+  relatedSlugs: seed.related,
+}));
+
+export const getDsaTopic = (slug: string | undefined) =>
+  dsaTopics.find((topic) => topic.slug === slug);

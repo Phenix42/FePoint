@@ -1,0 +1,240 @@
+import type { SystemDesignCaseStudy } from '@/types/content';
+
+const caseSeeds = [
+  [
+    'Design LinkedIn feed',
+    'Personalised ranking, creation, reactions, comments, and infinite scrolling.',
+  ],
+  [
+    'Design Reddit frontend',
+    'Nested discussions, voting, communities, moderation, and dense content feeds.',
+  ],
+  [
+    'Design YouTube frontend',
+    'Video discovery, playback, recommendations, comments, and resilient media UI.',
+  ],
+  [
+    'Design an e-commerce frontend',
+    'Product discovery, cart, checkout, inventory, and pricing consistency.',
+  ],
+  [
+    'Design a chat application',
+    'Ordered messages, presence, optimistic sending, and offline recovery.',
+  ],
+  ['Design a dashboard', 'Composable widgets, permissions, large datasets, and saved layouts.'],
+  [
+    'Design a notification centre',
+    'Multi-channel preferences, unread counts, grouping, and real-time updates.',
+  ],
+  ['Design a file uploader', 'Chunking, pause and resume, progress, retries, and file validation.'],
+  [
+    'Design a ticket-booking platform',
+    'Search, seat selection, temporary holds, and payment handoff.',
+  ],
+  [
+    'Design a learning-management platform',
+    'Content navigation, local progress, assessments, and discovery.',
+  ],
+  [
+    'Design an infinite scrolling feed',
+    'Cursor pagination, scroll restoration, caching, and list performance.',
+  ],
+  [
+    'Design a collaborative editor',
+    'Local edits, presence, conflict resolution, and durable document history.',
+  ],
+  [
+    'Design a photo-sharing feed',
+    'Media upload, responsive delivery, reactions, comments, and personalised discovery.',
+  ],
+  [
+    'Design a short-post timeline',
+    'Following graphs, ranked timelines, composition, reposts, and live counters.',
+  ],
+  [
+    'Design search autocomplete',
+    'Low-latency suggestions, keyboard interaction, caching, and request cancellation.',
+  ],
+  [
+    'Design a Kanban board',
+    'Drag alternatives, optimistic movement, filters, permissions, and collaboration.',
+  ],
+  [
+    'Design a calendar',
+    'Recurring events, time zones, conflicts, views, and accessible scheduling.',
+  ],
+  [
+    'Design a cloud document browser',
+    'Folders, sharing, upload, search, previews, and permission-aware navigation.',
+  ],
+  [
+    'Design a map application',
+    'Viewport queries, markers, clustering, routes, offline tiles, and gesture handling.',
+  ],
+  [
+    'Design a music player',
+    'Playback state, queues, downloads, media sessions, and resilient streaming.',
+  ],
+  [
+    'Design an email client',
+    'Threads, drafts, search, labels, optimistic actions, and offline synchronisation.',
+  ],
+  [
+    'Design a payment checkout',
+    'Cart review, address, payment handoff, idempotency, and recoverable failures.',
+  ],
+  [
+    'Design an admin permissions console',
+    'Roles, resource policies, audit history, safe previews, and bulk updates.',
+  ],
+  [
+    'Design an analytics explorer',
+    'Large datasets, query state, charts, exports, permissions, and saved reports.',
+  ],
+  [
+    'Design a component library',
+    'Tokens, accessible primitives, documentation, releases, and contribution governance.',
+  ],
+  [
+    'Design a form builder',
+    'Schemas, drag alternatives, validation, previews, versioning, and submissions.',
+  ],
+  [
+    'Design a browser code editor',
+    'Editing, syntax services, files, persistence, previews, and worker boundaries.',
+  ],
+  [
+    'Design an image gallery',
+    'Responsive media, virtualisation, upload, search, metadata, and keyboard navigation.',
+  ],
+  [
+    'Design live sports scores',
+    'Real-time events, ordering, fan-out, reconnects, and background notifications.',
+  ],
+  [
+    'Design a live auction',
+    'Ordered bids, countdowns, optimistic feedback, fraud controls, and settlement.',
+  ],
+  [
+    'Design a food-delivery tracker',
+    'Search, menus, carts, order state, courier location, and notifications.',
+  ],
+  [
+    'Design a job marketplace',
+    'Search, filters, applications, saved items, messaging, and employer workflows.',
+  ],
+  [
+    'Design a video meeting frontend',
+    'Device setup, media state, participants, chat, screen share, and recovery.',
+  ],
+  [
+    'Design offline notes',
+    'Local-first editing, conflict resolution, search, encryption, and background sync.',
+  ],
+] as const;
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/^design-?\s*/, '')
+    .replace(/[^a-z0-9]+/g, '-');
+
+export const systemDesignTopics = [
+  'Component architecture',
+  'State-management architecture',
+  'API layer design',
+  'Authentication architecture',
+  'Caching strategy',
+  'Pagination',
+  'Infinite scrolling',
+  'Search',
+  'Real-time updates',
+  'Error handling',
+  'Performance',
+  'Accessibility',
+  'Security',
+  'Internationalisation',
+  'Micro-frontends',
+  'Monorepos',
+  'Design systems',
+  'Feature flags',
+  'Offline-first applications',
+  'Progressive web apps',
+  'Analytics',
+  'Monitoring',
+  'Testing strategy',
+];
+
+export const systemDesignCases: SystemDesignCaseStudy[] = caseSeeds.map(
+  ([title, description], index) => ({
+    id: 'system-' + (index + 1),
+    slug: slugify(title),
+    title,
+    description,
+    difficulty: index < 3 ? 'Intermediate' : 'Advanced',
+    estimatedReadTime: 20 + (index % 4) * 5,
+    functionalRequirements: [
+      'Let users complete the primary read and write flows.',
+      'Support search, pagination, and recoverable failures.',
+      'Preserve navigation and in-progress work across refreshes.',
+    ],
+    nonFunctionalRequirements: [
+      'Responsive interaction under realistic network conditions.',
+      'WCAG 2.1 AA keyboard and screen-reader support.',
+      'Observable failures and independently deployable UI boundaries.',
+    ],
+    userFlow: [
+      'Enter or discover content',
+      'Inspect details',
+      'Take an action',
+      'Receive feedback',
+      'Resume later',
+    ],
+    components: [
+      'Application shell',
+      'Route boundary',
+      'Data controller',
+      'Feature view',
+      'Feedback layer',
+    ],
+    dataModels: [
+      'Entity: stable server-owned records indexed by id',
+      'View state: filters, selection, draft input, and scroll position',
+      'Cache metadata: cursor, freshness, request status, and optimistic patches',
+    ],
+    apiContracts: [
+      'GET /items?cursor={cursor}&limit=30',
+      'POST /items with an idempotency key',
+      'PATCH /items/{id} with an expected version',
+    ],
+    stateDecision:
+      'Keep server data in a request cache, URL-shareable state in route parameters, and ephemeral interaction state near the component that owns it.',
+    cachingStrategy:
+      'Cache list pages by stable query keys, revalidate in the background, and update optimistic actions with rollback data. Use cursor pagination where data changes frequently.',
+    performance: [
+      'Stream or progressively render the route shell.',
+      'Virtualise only after list size and trace data justify the complexity.',
+      'Preload the next likely navigation while respecting user data preferences.',
+    ],
+    accessibility: [
+      'Preserve logical focus after mutations and route transitions.',
+      'Announce asynchronous results through a polite status region.',
+      'Offer a non-drag interaction for every drag-and-drop flow.',
+    ],
+    security: [
+      'Treat all rendered user content as untrusted.',
+      'Keep authorization on the server and avoid secrets in browser bundles.',
+      'Use restrictive content security and referrer policies.',
+    ],
+    tradeOffs: [
+      'Freshness versus cache hit rate',
+      'Optimistic speed versus reconciliation complexity',
+      'Local autonomy versus globally consistent interaction patterns',
+    ],
+    followUps: [
+      'How would the design change for offline use?',
+      'Which metric detects that the interaction feels slow?',
+      'Where is the most valuable failure boundary?',
+    ],
+  }),
+);
