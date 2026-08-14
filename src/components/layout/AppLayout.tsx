@@ -7,6 +7,7 @@ import { useThemeStore } from '@/store/useAppStore';
 export function AppLayout() {
   const location = useLocation();
   const theme = useThemeStore((state) => state.theme);
+  const isLandingPage = location.pathname === '/';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -23,19 +24,8 @@ export function AppLayout() {
     return () => media.removeEventListener('change', applyTheme);
   }, [theme]);
 
-  useEffect(() => {
-    const handleShortcut = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault();
-        document.querySelector<HTMLButtonElement>('[aria-label="Open search"]')?.click();
-      }
-    };
-    window.addEventListener('keydown', handleShortcut);
-    return () => window.removeEventListener('keydown', handleShortcut);
-  }, []);
-
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="min-h-screen">
       <a
         className="fixed left-3 top-2 z-[100] -translate-y-20 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-[var(--bg)] transition focus:translate-y-0"
         href="#main-content"
@@ -43,10 +33,12 @@ export function AppLayout() {
         Skip to content
       </a>
       <Header />
-      <main className="flex-1" id="main-content">
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="flex min-h-screen min-w-0 flex-col xl:pl-72">
+        <main className="min-w-0 flex-1 pt-16 xl:pt-0" id="main-content">
+          <Outlet />
+        </main>
+        {!isLandingPage && <Footer />}
+      </div>
     </div>
   );
 }

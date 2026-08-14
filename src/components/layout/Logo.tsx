@@ -16,52 +16,14 @@ export function Logo({ compact = false, className }: { compact?: boolean; classN
 
 function Wordmark() {
   return (
-    <svg
+    <span
       aria-hidden="true"
-      className="h-9 w-[9.4rem] overflow-visible sm:w-[10.25rem]"
-      viewBox="0 0 330 76"
+      className="inline-flex h-9 items-center font-mono text-[1.22rem] font-black tracking-[-0.055em]"
     >
-      <path
-        d="M27 8H17C10 8 7 12 7 19V57C7 64 10 68 17 68H27"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="square"
-        strokeLinejoin="round"
-        strokeWidth="8"
-      />
-      <text
-        fill="none"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="58"
-        fontWeight="800"
-        letterSpacing="-4"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        x="36"
-        y="59"
-      >
-        Fe
-      </text>
-      <text
-        fill="currentColor"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="58"
-        fontWeight="800"
-        letterSpacing="-4"
-        x="104"
-        y="59"
-      >
-        Point
-      </text>
-      <path
-        d="M303 8H313C320 8 323 12 323 19V57C323 64 320 68 313 68H303"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="square"
-        strokeLinejoin="round"
-        strokeWidth="8"
-      />
-    </svg>
+      <span className="text-[#685cf6] dark:text-[#aaa4ff]">&lt;</span>
+      <span>FePoint</span>
+      <span className="text-[#685cf6] dark:text-[#aaa4ff]">/&gt;</span>
+    </span>
   );
 }
 

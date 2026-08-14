@@ -2,12 +2,13 @@ const environment = import.meta.env as unknown as Record<string, string | undefi
 const assetBase = environment.BASE_URL ?? '/';
 
 export const siteConfig = {
-  name: 'FEPoint',
+  name: 'FePoint',
   shortName: 'FE',
   description:
     'A free, no-signup learning platform for frontend tutorials, practice, system design, and interview preparation.',
   url: environment.VITE_SITE_URL ?? 'https://fepoint.example.com',
   githubUrl: environment.VITE_GITHUB_URL ?? 'https://github.com/your-org/fepoint',
+  discordUrl: environment.VITE_DISCORD_URL ?? 'https://discord.com/',
   email: 'hello@fepoint.dev',
   logoUrl: assetBase + 'fepoint-logo.svg',
   iconUrl: assetBase + 'fepoint-icon.svg',

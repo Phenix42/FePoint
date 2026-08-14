@@ -76,6 +76,7 @@ npm run generate:sitemap # Regenerate public/sitemap.xml
 | ------------------------- | --------------------------------------------- | -------------------------------------- |
 | `VITE_SITE_URL`           | Canonical production URL and sitemap base     | `https://fepoint.example.com`          |
 | `VITE_GITHUB_URL`         | Repository and contribution links             | Placeholder repository                 |
+| `VITE_DISCORD_URL`        | Discord link shown beside the theme control    | Discord homepage                        |
 | `VITE_FORMSPREE_ENDPOINT` | Optional contact-form endpoint                | Empty; form runs in demonstration mode |
 | `VITE_BASE_PATH`          | Deployment base path, mainly for GitHub Pages | `/`                                    |
 
