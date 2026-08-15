@@ -13,6 +13,9 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(currentDirectory, './src') },
   },
+  optimizeDeps: {
+    include: ['react-markdown', 'remark-gfm'],
+  },
   build: {
     sourcemap: true,
   },

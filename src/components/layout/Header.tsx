@@ -1,6 +1,8 @@
 import {
   BookOpenCheck,
   CalendarCheck2,
+  ChevronDown,
+  GraduationCap,
   ListChecks,
   Menu,
   MessageSquareCode,
@@ -13,6 +15,7 @@ import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '@/components/layout/Logo';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
+import { TutorialCurriculumNav } from '@/components/tutorial/TutorialCurriculumNav';
 import { cn } from '@/utils/cn';
 
 type NavigationItem = {
@@ -28,6 +31,12 @@ const navigationItems: NavigationItem[] = [
     href: '/',
     icon: BookOpenCheck,
     matches: (pathname) => pathname === '/',
+  },
+  {
+    label: 'Tutorial',
+    href: '/tutorials',
+    icon: GraduationCap,
+    matches: (pathname) => pathname.startsWith('/tutorials'),
   },
   {
     label: 'Interview Questions',
@@ -120,7 +129,7 @@ export function Header() {
 
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r bg-[var(--surface)] px-5 py-7 xl:flex">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden min-h-0 w-72 flex-col border-r bg-[var(--surface)] px-5 py-7 xl:flex">
         <Logo className="px-3" />
         <Navigation currentPath={location.pathname} />
         <div className="mt-auto flex items-center justify-between border-t px-3 pt-5">
@@ -204,14 +213,90 @@ function Navigation({
   mobileOpen?: boolean;
   onNavigate?: () => void;
 }) {
+  const tutorialActive = currentPath.startsWith('/tutorials');
+  const [tutorialPreference, setTutorialPreference] = useState({
+    path: currentPath,
+    expanded: tutorialActive,
+  });
+  const tutorialExpanded =
+    tutorialPreference.path === currentPath ? tutorialPreference.expanded : tutorialActive;
+
   return (
-    <nav aria-label="Primary navigation" className="mt-10">
+    <nav
+      aria-label="Primary navigation"
+      className="mt-10 min-h-0 flex-1 overflow-y-auto pr-1 scrollbar-thin"
+    >
       <p className="px-3 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[var(--text-faint)]">
         Learn &amp; prepare
       </p>
       <ul className="mt-3 space-y-1">
         {navigationItems.map(({ label, href, icon: Icon, matches }) => {
           const active = matches(currentPath);
+
+          if (href === '/tutorials') {
+            return (
+              <li key={href}>
+                <div
+                  className={cn(
+                    'group relative flex min-h-11 items-center rounded-xl text-[0.84rem] font-semibold text-[var(--text-soft)] transition duration-200 hover:bg-[var(--surface-muted)] hover:text-[var(--text)]',
+                    active &&
+                      'bg-[#685cf6]/10 text-[#5549e5] shadow-[inset_0_0_0_1px_rgba(104,92,246,0.12)] hover:bg-[#685cf6]/12 hover:text-[#5549e5] dark:text-[#aaa4ff]',
+                  )}
+                >
+                  {active && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-y-2 left-0 w-0.5 rounded-r-full bg-[#685cf6]"
+                    />
+                  )}
+                  <Link
+                    aria-current={active ? 'page' : undefined}
+                    className="flex min-w-0 flex-1 items-center gap-3 px-3 py-2.5"
+                    onClick={onNavigate}
+                    tabIndex={mobileOpen ? undefined : -1}
+                    to={href}
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      className={cn(
+                        'size-[1.05rem] shrink-0 text-[var(--text-faint)] transition group-hover:text-[var(--text)]',
+                        active && 'text-[#685cf6] group-hover:text-[#685cf6]',
+                      )}
+                    />
+                    <span>{label}</span>
+                  </Link>
+                  <button
+                    aria-expanded={tutorialExpanded}
+                    aria-label={(tutorialExpanded ? 'Collapse' : 'Expand') + ' tutorial roadmap'}
+                    className="mr-1 grid size-9 shrink-0 place-items-center rounded-lg transition hover:bg-[var(--surface)]"
+                    onClick={() =>
+                      setTutorialPreference({
+                        path: currentPath,
+                        expanded: !tutorialExpanded,
+                      })
+                    }
+                    tabIndex={mobileOpen ? undefined : -1}
+                    type="button"
+                  >
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={cn(
+                        'size-4 transition-transform',
+                        tutorialExpanded && 'rotate-180',
+                      )}
+                    />
+                  </button>
+                </div>
+                {tutorialExpanded && (
+                  <TutorialCurriculumNav
+                    currentPath={currentPath}
+                    mobileOpen={mobileOpen}
+                    onNavigate={onNavigate}
+                  />
+                )}
+              </li>
+            );
+          }
 
           return (
             <li key={href}>

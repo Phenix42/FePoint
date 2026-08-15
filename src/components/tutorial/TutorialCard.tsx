@@ -52,7 +52,7 @@ export function TutorialCard({
           <Clock3 className="size-3.5" /> {tutorial.estimatedReadTime} min
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <BookOpen className="size-3.5" /> {tutorial.codeExamples.length} example
+          <BookOpen className="size-3.5" /> Explained example
         </span>
         {done ? (
           <span className="ml-auto inline-flex items-center gap-1 text-emerald-500">

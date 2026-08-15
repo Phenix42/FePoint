@@ -23,6 +23,14 @@ export const searchDocuments: SearchDocument[] = [
     url: '/tutorials/' + tutorial.category + '/' + tutorial.slug,
     tags: tutorial.tags,
     category: tutorial.categoryLabel,
+    searchText: [
+      tutorial.definition,
+      tutorial.explanation.what,
+      tutorial.explanation.why,
+      ...tutorial.explanation.how,
+      ...tutorial.explanation.where,
+      ...tutorial.keyPoints,
+    ].join(' '),
   })),
   ...interviewQuestions.map((question) => ({
     id: question.id,
@@ -139,6 +147,7 @@ const fuse = new Fuse(searchDocuments, {
     { name: 'title', weight: 0.5 },
     { name: 'tags', weight: 0.25 },
     { name: 'description', weight: 0.15 },
+    { name: 'searchText', weight: 0.12 },
     { name: 'category', weight: 0.1 },
   ],
   threshold: 0.36,

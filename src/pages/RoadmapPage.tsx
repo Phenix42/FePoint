@@ -34,7 +34,7 @@ export default function RoadmapPage() {
       <PageHero
         actions={
           <>
-            <Link className={buttonStyles()} to="/tutorials/browser">
+            <Link className={buttonStyles()} to="/tutorials/web-fundamentals">
               Start stage one
             </Link>
             <Button
@@ -63,7 +63,7 @@ export default function RoadmapPage() {
             <ProgressBar className="mt-4" value={percentage} />
           </div>
         }
-        description="Follow eight deliberate stages. Check off every concept locally, move at your own pace, and revisit any topic whenever you need it."
+        description="Follow thirteen deliberate stages. Check off every concept locally, move at your own pace, and revisit any topic whenever you need it."
         eyebrow="Your frontend path"
         title="One roadmap. From first request to system architecture."
       />
@@ -77,8 +77,7 @@ export default function RoadmapPage() {
               ).length;
               const stagePercent = (stageCompleted / stage.items.length) * 100;
               const open = openStages.includes(stage.id);
-              const route =
-                stage.id === 'system-design' ? '/system-design' : '/tutorials/' + stage.id;
+              const route = '/tutorials/' + stage.id;
 
               return (
                 <section className="relative pl-14 sm:pl-20" key={stage.id}>

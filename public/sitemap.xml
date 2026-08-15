@@ -3,22 +3,48 @@
   <url><loc>https://phenix42.github.io/FePoint/</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/roadmap</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/browser</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/web-fundamentals</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/web-fundamentals/what-is-the-web</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/web-fundamentals/how-websites-work</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/web-fundamentals/browser-client-server</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/html/html-fundamentals</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/html/html-elements-and-semantics</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/css</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/css/css-fundamentals</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/javascript-fundamentals</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/variables</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/data-types</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/operators</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/conditions</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/loops</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/functions-and-scope</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/arrays-and-objects</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/dom</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/events</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/async-javascript</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/javascript/apis-and-fetch</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/frontend-tooling</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/frontend-tooling/frontend-tooling-fundamentals</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/typescript</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/typescript/typescript-fundamentals</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/react</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/react/react-fundamentals</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/react/advanced-react</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/nextjs</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/computer-fundamentals</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/internet</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/dom</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/git-and-tools</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/state-and-api</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/testing</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/nextjs/nextjs-fundamentals</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/performance</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/performance/frontend-performance</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/testing</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/testing/frontend-testing</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/tutorials/security</loc><changefreq>weekly</changefreq></url>
-  <url><loc>https://phenix42.github.io/FePoint/tutorials/accessibility</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/security/frontend-security</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/advanced-frontend</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/advanced-frontend/accessibility</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/advanced-frontend/frontend-architecture</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/system-design</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://phenix42.github.io/FePoint/tutorials/system-design/frontend-system-design</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/practice</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/practice/javascript</loc><changefreq>weekly</changefreq></url>
   <url><loc>https://phenix42.github.io/FePoint/practice/react</loc><changefreq>weekly</changefreq></url>

@@ -1,4 +1,5 @@
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced';
+export type FrontendJourneyStage = 'Beginner' | 'Intermediate' | 'Advanced' | 'Interview Ready';
 export type ThemePreference = 'light' | 'dark' | 'system';
 export type ContentType =
   | 'tutorial'
@@ -21,10 +22,46 @@ export interface CodeExample {
   preview?: string;
 }
 
-export interface TutorialSection {
-  id: string;
+export type InterviewQuestionLevel = 'Basic' | 'Intermediate' | 'Advanced';
+
+export interface TutorialExplanation {
+  what: string;
+  why: string;
+  how: string[];
+  where: string[];
+}
+
+export interface TutorialExample {
   title: string;
-  content: string;
+  language: CodeExample['language'];
+  code: string;
+  explanation: string;
+  walkthrough: Array<{ code: string; explanation: string }>;
+  output: string;
+}
+
+export interface TutorialRealWorldExample {
+  title: string;
+  description: string;
+  steps: string[];
+}
+
+export interface TutorialCommonMistake {
+  title: string;
+  explanation: string;
+  code?: string;
+}
+
+export interface TutorialInterviewQuestion {
+  level: InterviewQuestionLevel;
+  question: string;
+  answer: string;
+  deepDive?: string;
+}
+
+export interface TutorialSource {
+  label: string;
+  url: string;
 }
 
 export interface Tutorial {
@@ -40,13 +77,16 @@ export interface Tutorial {
   order: number;
   prerequisites: string[];
   learningObjectives: string[];
-  sections: TutorialSection[];
-  codeExamples: CodeExample[];
-  commonMistakes: string[];
-  bestPractices: string[];
-  interviewQuestions: string[];
-  practiceExercises: string[];
-  relatedTopics: string[];
+  definition: string;
+  explanation: TutorialExplanation;
+  example: TutorialExample;
+  realWorldExample: TutorialRealWorldExample;
+  visualFlow?: string[];
+  keyPoints: string[];
+  commonMistakes: TutorialCommonMistake[];
+  interviewQuestions: TutorialInterviewQuestion[];
+  relatedSlugs: string[];
+  sources: TutorialSource[];
   tags: string[];
   updatedAt: string;
   popularity: number;
@@ -115,67 +155,6 @@ export interface PracticeQuestion {
   tags: string[];
   estimatedMinutes: number;
   companies: string[];
-}
-
-export interface LearningObjective {
-  id: string;
-  text: string;
-}
-
-export interface LessonSection {
-  id: string;
-  title: string;
-  simpleExplanation: string;
-  detailedExplanation: string;
-}
-
-export interface TerminologyReference {
-  termId: string;
-  label: string;
-}
-
-export interface CodeWalkthroughLine {
-  line: number;
-  code: string;
-  explanation: string;
-}
-
-export interface CodeWalkthrough {
-  language: CodeExample['language'];
-  title: string;
-  lines: CodeWalkthroughLine[];
-  output: string;
-}
-
-export interface Lesson {
-  id: string;
-  slug: string;
-  category: string;
-  title: string;
-  description: string;
-  difficulty: Difficulty;
-  estimatedMinutes: number;
-  objectives: LearningObjective[];
-  prerequisites: string[];
-  terminology: TerminologyReference[];
-  analogy: string;
-  whyItExists: string;
-  problemItSolves: string;
-  simpleExplanation: string;
-  developerExplanation: string;
-  interviewExplanation: string;
-  advancedExplanation: string;
-  sections: LessonSection[];
-  walkthrough: CodeWalkthrough;
-  commonMistakes: string[];
-  edgeCases: string[];
-  bestPractices: string[];
-  performanceNotes: string[];
-  exercises: string[];
-  miniProject: string;
-  revisionNotes: string[];
-  relatedLessonSlugs: string[];
-  updatedAt: string;
 }
 
 export interface GlossaryTerm {
@@ -446,4 +425,5 @@ export interface SearchDocument {
   url: string;
   tags: string[];
   category: string;
+  searchText?: string;
 }

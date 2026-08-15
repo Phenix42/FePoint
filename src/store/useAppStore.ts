@@ -337,7 +337,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'fepoint-local-data',
-      version: 2,
+      version: 3,
       storage: createJSONStorage(() => localStorage),
       migrate: (persistedState) => migrateProgressSnapshot(persistedState),
       partialize: (state) => ({
