@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "prebuild": "npm run generate:sitemap",
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/postbuild.mjs",

@@ -39,6 +39,7 @@ const RecentPage = page(() => import('@/pages/RecentPage'));
 const AboutPage = page(() => import('@/pages/AboutPage'));
 const ContactPage = page(() => import('@/pages/ContactPage'));
 const ContributePage = page(() => import('@/pages/ContributePage'));
+const InterviewTrailPage = page(() => import('@/pages/InterviewTrailPage'));
 const PrivacyPage = lazy(() =>
   import('@/pages/LegalPages').then((module) => ({ default: module.PrivacyPage })),
 );
@@ -99,6 +100,7 @@ export const router = createBrowserRouter(
         { path: 'about', element: withSuspense(AboutPage) },
         { path: 'contact', element: withSuspense(ContactPage) },
         { path: 'contribute', element: withSuspense(ContributePage) },
+        { path: 'interview-trail', element: withSuspense(InterviewTrailPage) },
         { path: 'privacy', element: withSuspense(PrivacyPage) },
         { path: 'terms', element: withSuspense(TermsPage) },
         { path: '404', element: <NotFoundPage /> },
