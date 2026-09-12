@@ -1,0 +1,346 @@
+/* InterviewTrail — personal interview journal theme */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+.interview-trail {
+  /* ── Brand / Accent (violet) ────────────────────────── */
+  --it-primary: #685cf6;
+  --it-primary-dark: #5549e5;
+  --it-primary-light: #aaa4ff;
+  --it-primary-hover: #594de6;
+
+  /* ── UI Neutrals (Light theme) ──────────────────────── */
+  --it-bg: #f5f5f5;
+  --it-surface: #ffffff;
+  --it-surface-raised: rgba(255, 255, 255, 0.88);
+  --it-surface-muted: #eeeeee;
+  --it-border: #dedede;
+  --it-border-strong: #bdbdbd;
+  --it-text: #050505;
+  --it-text-soft: #404040;
+  --it-text-faint: #6b6b6b;
+
+  /* ── Semantic status colors ─────────────────────────── */
+  --it-green: #16a34a;
+  --it-green-light: #dcfce7;
+  --it-green-text: #166534;
+  --it-red: #dc2626;
+  --it-red-light: #fee2e2;
+  --it-red-text: #991b2b;
+
+  /* ── Depth / shadows ────────────────────────────────── */
+  --it-shadow: 0 10px 28px rgba(10, 26, 47, 0.06);
+  --it-sticker: 0 6px 16px rgba(10, 26, 47, 0.08);
+}
+
+/* ── Dark theme overrides ─────────────────────────────── */
+.dark .interview-trail {
+  --it-bg: #050505;
+  --it-surface: #0c0c0c;
+  --it-surface-raised: rgba(12, 12, 12, 0.9);
+  --it-surface-muted: #171717;
+  --it-border: #292929;
+  --it-border-strong: #444444;
+  --it-text: #fafafa;
+  --it-text-soft: #c5c5c5;
+  --it-text-faint: #909090;
+
+  --it-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+  --it-sticker: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.interview-trail .it-heading {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.interview-trail .it-body {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+.interview-trail .it-divider {
+  border-top: 1px dashed var(--it-border);
+}
+
+.interview-trail .it-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  box-shadow: var(--it-sticker);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.interview-trail .it-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(10, 26, 47, 0.12);
+}
+
+.dark .interview-trail .it-pill:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.interview-trail .it-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.interview-trail .it-tag-offer {
+  background: var(--it-green-light);
+  color: var(--it-green-text);
+}
+
+.interview-trail .it-tag-rejected {
+  background: var(--it-red-light);
+  color: var(--it-red-text);
+}
+
+.interview-trail .it-tag-inprogress {
+  background: color-mix(in srgb, var(--it-primary) 15%, transparent);
+  color: var(--it-primary-dark);
+}
+
+.interview-trail .it-highlight {
+  animation: it-highlight 2.5s ease-out;
+}
+
+@keyframes it-highlight {
+  0% {
+    background-color: var(--it-primary-light);
+  }
+  50% {
+    background-color: var(--it-primary-light);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.interview-trail .it-toast-enter {
+  animation: it-toast-in 0.3s ease-out forwards;
+}
+
+@keyframes it-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.interview-trail .it-toast-exit {
+  animation: it-toast-out 0.3s ease-out forwards;
+}
+
+@keyframes it-toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+  }
+}
+
+.interview-trail .it-input {
+  background: var(--it-surface);
+  border: 1px solid var(--it-border);
+  color: var(--it-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.interview-trail .it-input:focus {
+  border-color: var(--it-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--it-primary) 20%, transparent);
+}
+
+.interview-trail .it-textarea {
+  background: var(--it-surface);
+  border: 1px solid var(--it-border);
+  color: var(--it-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  min-height: 120px;
+  resize: vertical;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.interview-trail .it-textarea:focus {
+  border-color: var(--it-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--it-primary) 20%, transparent);
+}
+
+.interview-trail .it-select {
+  background: var(--it-surface);
+  border: 1px solid var(--it-border);
+  color: var(--it-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23404040' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 0.8rem;
+  padding-right: 2.5rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.interview-trail .it-select:focus {
+  border-color: var(--it-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--it-primary) 20%, transparent);
+}
+
+.interview-trail .it-card {
+  background: var(--it-surface-raised);
+  border: 1px solid var(--it-border);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--it-shadow);
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.interview-trail .it-card:hover {
+  box-shadow: 0 12px 32px rgba(10, 26, 47, 0.12);
+  transform: translateY(-2px);
+}
+
+.dark .interview-trail .it-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.interview-trail .it-form-card {
+  background: var(--it-surface-raised);
+  border: 1px solid var(--it-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--it-shadow);
+}
+
+.interview-trail .it-interview-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.interview-trail .it-interview-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.interview-trail .it-interview-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.interview-trail .it-interview-list::-webkit-scrollbar-thumb {
+  background: var(--it-border);
+  border-radius: 3px;
+}
+
+.interview-trail .it-interview-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--it-border) transparent;
+}
+
+.interview-trail .it-expand-content {
+  border-top: 1px dashed var(--it-border);
+}
+
+.interview-trail .it-tag {
+  cursor: default;
+}
+
+.interview-trail .it-tag.clickable {
+  cursor: pointer;
+}
+
+/* ── Q&A panel styles ─────────────────────────────────── */
+.interview-trail .it-qa-card {
+  background: var(--it-surface-raised);
+  border: 1px solid var(--it-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--it-shadow);
+}
+
+.interview-trail .it-qa-close {
+  box-shadow: var(--it-sticker);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.interview-trail .it-qa-close:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(10, 26, 47, 0.12);
+}
+
+.dark .interview-trail .it-qa-close:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.interview-trail .it-qa-item {
+  border-left: 3px solid var(--it-primary);
+  padding-left: 1rem;
+}
+
+.interview-trail .it-qa-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.interview-trail .it-qa-question::before {
+  content: '💬';
+  font-size: 1.1rem;
+}
+
+.interview-trail .it-qa-answer {
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interview-trail .it-pill:hover,
+  .interview-trail .it-card:hover {
+    transform: none;
+  }
+  .interview-trail .it-highlight {
+    animation: none;
+  }
+}
