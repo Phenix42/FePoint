@@ -1,27 +1,19 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 const siteUrl = new URL(process.env.VITE_SITE_URL ?? 'https://fepoint.example.com');
 const siteBasePath = siteUrl.pathname.replace(/\/$/, '');
+const curriculum = JSON.parse(
+  await readFile(new URL('../src/data/frontendCurriculum.json', import.meta.url), 'utf8'),
+);
+const tutorialRoutes = curriculum.flatMap((category) => [
+  `/tutorials/${category.id}`,
+  ...category.lessons.map((lesson) => `/tutorials/${category.id}/${lesson.slug}`),
+]);
 const routes = [
   '/',
   '/roadmap',
   '/tutorials',
-  '/tutorials/browser',
-  '/tutorials/html',
-  '/tutorials/css',
-  '/tutorials/javascript',
-  '/tutorials/typescript',
-  '/tutorials/react',
-  '/tutorials/nextjs',
-  '/tutorials/computer-fundamentals',
-  '/tutorials/internet',
-  '/tutorials/dom',
-  '/tutorials/git-and-tools',
-  '/tutorials/state-and-api',
-  '/tutorials/testing',
-  '/tutorials/performance',
-  '/tutorials/security',
-  '/tutorials/accessibility',
+  ...tutorialRoutes,
   '/practice',
   '/practice/javascript',
   '/practice/react',

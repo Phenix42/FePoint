@@ -2,7 +2,6 @@ import { glossaryTerms } from '@/content/glossary/glossaryTerms';
 import { dsaProblems } from '@/content/dsa/dsaProblems';
 import { systemDesignLearningTopics } from '@/content/system-design/systemDesignTopics';
 import { machineCodingChallenges } from '@/data/machineCoding';
-import { tutorials } from '@/data/tutorials';
 import { practiceQuestionSchema, validateUniqueIds } from '@/schemas/contentSchemas';
 import type { PracticeQuestion } from '@/types/content';
 
@@ -24,14 +23,14 @@ const categoryContext: Record<string, string> = {
 };
 
 const tutorialByCategory: Record<string, string> = {
-  Internet: 'what-happens-when-you-enter-a-url',
-  Browser: 'browser-rendering-process',
-  HTML: 'semantic-html',
+  Internet: 'how-websites-work',
+  Browser: 'browser-client-server',
+  HTML: 'html-elements-and-semantics',
   Accessibility: 'accessibility',
-  CSS: 'flexbox',
-  JavaScript: 'event-loop',
-  TypeScript: 'generics',
-  React: 'state',
+  CSS: 'css-fundamentals',
+  JavaScript: 'async-javascript',
+  TypeScript: 'typescript-fundamentals',
+  React: 'react-fundamentals',
 };
 
 const option = (id: string, label: string) => ({ id, label });
@@ -157,7 +156,7 @@ const handcraftedSeeds: PracticeQuestion[] = [
     whyWrong:
       'A zero-millisecond timer is still a task, while the Promise callback is a microtask processed first.',
     hint: 'Separate synchronous work, microtasks, and tasks.',
-    relatedTutorialSlug: 'event-loop',
+    relatedTutorialSlug: 'async-javascript',
     relatedQuestionIds: ['practice-definition-event-loop', 'practice-definition-promise'],
     tags: ['javascript', 'event-loop', 'output'],
     estimatedMinutes: 4,
@@ -218,7 +217,7 @@ const handcraftedSeeds: PracticeQuestion[] = [
     whyWrong:
       'A random key changes every render, forcing remounts and discarding local component state.',
     hint: 'Identity should come from the data, not the current position.',
-    relatedTutorialSlug: 'state',
+    relatedTutorialSlug: 'react-fundamentals',
     relatedQuestionIds: ['practice-definition-reconciliation', 'practice-definition-react-render'],
     tags: ['react', 'keys', 'debugging'],
     estimatedMinutes: 4,
@@ -286,87 +285,6 @@ const handcraftedSeeds: PracticeQuestion[] = [
     companies: ['Netflix', 'LinkedIn'],
   },
 ].map((question) => practiceQuestionSchema.parse(question));
-
-const categoryPlan: Record<
-  string,
-  { category: string; multiplier: number; experience: PracticeQuestion['experienceLevel'] }
-> = {
-  browser: { category: 'Browser and internet', multiplier: 1, experience: 'Foundation' },
-  internet: { category: 'Browser and internet', multiplier: 1, experience: 'Foundation' },
-  html: { category: 'HTML', multiplier: 2, experience: 'Foundation' },
-  css: { category: 'CSS', multiplier: 2, experience: 'Junior' },
-  javascript: { category: 'JavaScript', multiplier: 2, experience: 'Junior' },
-  typescript: { category: 'TypeScript', multiplier: 2, experience: 'Junior' },
-  react: { category: 'React', multiplier: 2, experience: 'Junior' },
-  nextjs: { category: 'Next.js', multiplier: 2, experience: 'Mid-level' },
-  testing: { category: 'Testing', multiplier: 3, experience: 'Junior' },
-  performance: { category: 'Performance', multiplier: 2, experience: 'Mid-level' },
-  accessibility: { category: 'Accessibility', multiplier: 2, experience: 'Junior' },
-  security: { category: 'Security', multiplier: 2, experience: 'Mid-level' },
-  'computer-fundamentals': {
-    category: 'Computer fundamentals',
-    multiplier: 1,
-    experience: 'Foundation',
-  },
-  dom: { category: 'DOM and Web APIs', multiplier: 1, experience: 'Junior' },
-  'git-and-tools': { category: 'Git and tools', multiplier: 1, experience: 'Foundation' },
-  'state-and-api': { category: 'State and API management', multiplier: 1, experience: 'Mid-level' },
-};
-
-const tutorialQuestions: PracticeQuestion[] = tutorials.flatMap((tutorial, tutorialIndex) => {
-  const plan = categoryPlan[tutorial.category] ?? {
-    category: tutorial.categoryLabel,
-    multiplier: 1,
-    experience: 'Junior' as const,
-  };
-  return Array.from({ length: plan.multiplier }, (_, variant) => {
-    const distractorOne = tutorials[(tutorialIndex + 17 + variant) % tutorials.length]!;
-    const distractorTwo = tutorials[(tutorialIndex + 43 + variant) % tutorials.length]!;
-    const format: PracticeQuestion['questionType'] =
-      variant === 0 ? 'Multiple choice' : variant === 1 ? 'Scenario' : 'Conceptual';
-    return practiceQuestionSchema.parse({
-      id: `practice-tutorial-${tutorial.category}-${tutorial.slug}-${variant + 1}`,
-      title: `${tutorial.title}: ${variant === 0 ? 'core idea' : variant === 1 ? 'applied reasoning' : 'test strategy'}`,
-      question:
-        variant === 0
-          ? `Which explanation best captures the purpose of ${tutorial.title}?`
-          : variant === 1
-            ? `A teammate is applying ${tutorial.title}. Which reasoning should guide the implementation?`
-            : `Which test would give the most useful confidence when working with ${tutorial.title}?`,
-      category: plan.category,
-      subcategory: tutorial.title,
-      difficulty: tutorial.difficulty,
-      experienceLevel: plan.experience,
-      questionType: format,
-      options: [
-        option(
-          'correct',
-          `${tutorial.description} The implementation should also consider observable behaviour, failure states, accessibility, and maintainability.`,
-        ),
-        option('wrong-unrelated', distractorOne.description),
-        option(
-          'wrong-absolute',
-          `${tutorial.title} is only syntax and never affects runtime behaviour, users, or architecture.`,
-        ),
-        option(
-          'wrong-optimise',
-          `Optimise ${tutorial.title} immediately before defining the requirement or measuring a bottleneck.`,
-        ),
-      ],
-      correctAnswers: ['correct'],
-      detailedExplanation: `${tutorial.description} A strong answer connects the definition to observable behaviour, one example, a boundary case, and a deliberate trade-off.`,
-      simpleExplanation: `Start with the purpose of ${tutorial.title}, then connect it to what a user or developer can observe.`,
-      commonWrongAnswer: distractorTwo.description,
-      whyWrong: `That statement describes ${distractorTwo.title}, not the responsibility and trade-offs of ${tutorial.title}.`,
-      hint: tutorial.learningObjectives[0] ?? `Define ${tutorial.title} before choosing syntax.`,
-      relatedTutorialSlug: tutorial.slug,
-      relatedQuestionIds: [`practice-definition-${tutorial.tags[2] ?? tutorial.slug}`],
-      tags: [...tutorial.tags, 'curriculum-assessment'],
-      estimatedMinutes: 3,
-      companies: [],
-    });
-  });
-});
 
 const systemDesignQuestions: PracticeQuestion[] = systemDesignLearningTopics.flatMap(
   (topic, topicIndex) =>
@@ -523,7 +441,6 @@ export const practiceQuestions = validateUniqueIds(
   [
     ...generatedQuestions,
     ...handcraftedSeeds,
-    ...tutorialQuestions,
     ...systemDesignQuestions,
     ...dsaAssessmentQuestions,
     ...machineCodingQuestions,

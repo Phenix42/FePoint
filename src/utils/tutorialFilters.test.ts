@@ -5,12 +5,12 @@ import { filterTutorials } from '@/utils/tutorialFilters';
 describe('filterTutorials', () => {
   it('combines keyword, difficulty, and reading-time filters', () => {
     const results = filterTutorials(tutorials, {
-      query: 'document',
+      query: 'semantic',
       difficulty: 'Beginner',
       maxTime: '15',
       sort: 'popular',
     });
-    expect(results.map((item) => item.title)).toContain('HTML document structure');
+    expect(results.map((item) => item.title)).toContain('HTML Elements and Semantic Structure');
     expect(results.every((item) => item.estimatedReadTime <= 15)).toBe(true);
   });
 

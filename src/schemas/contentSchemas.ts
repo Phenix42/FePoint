@@ -18,58 +18,84 @@ export const glossaryTermSchema = z.object({
   relatedTerms: z.array(z.string()),
 });
 
-export const lessonSchema = z.object({
-  id: z.string().min(2),
-  slug: z.string().regex(/^[a-z0-9-]+$/),
-  category: z.string().min(2),
-  title: z.string().min(3),
-  description: z.string().min(30),
-  difficulty: difficultySchema,
-  estimatedMinutes: z.number().int().positive(),
-  objectives: z.array(z.object({ id: z.string(), text: z.string().min(10) })).min(3),
-  prerequisites: z.array(z.string()).min(1),
-  terminology: z.array(z.object({ termId: z.string(), label: z.string() })),
-  analogy: z.string().min(30),
-  whyItExists: z.string().min(30),
-  problemItSolves: z.string().min(30),
-  simpleExplanation: z.string().min(50),
-  developerExplanation: z.string().min(50),
-  interviewExplanation: z.string().min(50),
-  advancedExplanation: z.string().min(50),
-  sections: z
-    .array(
+const codeLanguageSchema = z.enum(['html', 'css', 'javascript', 'typescript', 'tsx', 'json']);
+
+export const tutorialSchema = z
+  .object({
+    id: z.string().min(2),
+    slug: z.string().regex(/^[a-z0-9-]+$/),
+    category: z.string().min(2),
+    categoryLabel: z.string().min(2),
+    subcategory: z.string().min(2),
+    title: z.string().min(3),
+    description: z.string().min(30),
+    difficulty: difficultySchema,
+    estimatedReadTime: z.number().int().positive(),
+    order: z.number().int().nonnegative(),
+    prerequisites: z.array(z.string()).min(1),
+    learningObjectives: z.array(z.string().min(10)).min(2),
+    definition: z.string().min(25).max(600),
+    explanation: z.object({
+      what: z.string().min(40),
+      why: z.string().min(40),
+      how: z.array(z.string().min(15)).min(2),
+      where: z.array(z.string().min(8)).min(2),
+    }),
+    example: z.object({
+      title: z.string().min(3),
+      language: codeLanguageSchema,
+      code: z.string().min(3),
+      explanation: z.string().min(20),
+      walkthrough: z
+        .array(
+          z.object({
+            code: z.string().min(1),
+            explanation: z.string().min(10),
+          }),
+        )
+        .min(1),
+      output: z.string().min(3),
+    }),
+    realWorldExample: z.object({
+      title: z.string().min(3),
+      description: z.string().min(30),
+      steps: z.array(z.string().min(10)).min(2),
+    }),
+    visualFlow: z.array(z.string().min(3)).min(3).optional(),
+    keyPoints: z.array(z.string().min(10)).min(3).max(8),
+    commonMistakes: z.array(
       z.object({
-        id: z.string(),
-        title: z.string(),
-        simpleExplanation: z.string().min(30),
-        detailedExplanation: z.string().min(50),
+        title: z.string().min(3),
+        explanation: z.string().min(20),
+        code: z.string().optional(),
       }),
-    )
-    .min(3),
-  walkthrough: z.object({
-    language: z.enum(['html', 'css', 'javascript', 'typescript', 'tsx', 'json']),
-    title: z.string(),
-    lines: z
+    ),
+    interviewQuestions: z
       .array(
         z.object({
-          line: z.number().int().positive(),
-          code: z.string(),
-          explanation: z.string().min(10),
+          level: z.enum(['Basic', 'Intermediate', 'Advanced']),
+          question: z.string().min(8),
+          answer: z.string().min(20),
+          deepDive: z.string().min(30).optional(),
         }),
       )
       .min(2),
-    output: z.string(),
-  }),
-  commonMistakes: z.array(z.string()).min(2),
-  edgeCases: z.array(z.string()).min(2),
-  bestPractices: z.array(z.string()).min(2),
-  performanceNotes: z.array(z.string()).min(1),
-  exercises: z.array(z.string()).min(2),
-  miniProject: z.string().min(20),
-  revisionNotes: z.array(z.string()).min(5),
-  relatedLessonSlugs: z.array(z.string()),
-  updatedAt: z.iso.date(),
-});
+    relatedSlugs: z.array(z.string().regex(/^[a-z0-9-]+$/)),
+    sources: z.array(z.object({ label: z.string().min(3), url: z.url() })).min(1),
+    tags: z.array(z.string().min(2)).min(2),
+    updatedAt: z.iso.date(),
+    popularity: z.number().min(0).max(100),
+  })
+  .superRefine((tutorial, context) => {
+    const levels = new Set(tutorial.interviewQuestions.map((question) => question.level));
+    if (!levels.has('Basic') || !levels.has('Intermediate')) {
+      context.addIssue({
+        code: 'custom',
+        message: 'Every tutorial needs at least one Basic and one Intermediate interview question.',
+        path: ['interviewQuestions'],
+      });
+    }
+  });
 
 export const practiceQuestionSchema = z.object({
   id: z.string().min(2),

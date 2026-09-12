@@ -2,6 +2,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { buttonStyles } from '@/components/common/Button';
 import { Seo } from '@/components/common/Seo';
+import { GlobalSearchBar } from '@/components/search/GlobalSearchBar';
 
 const description =
   'Learn frontend development from fundamentals to advanced concepts with simple explanations, practical examples, interview questions, DSA, system design, and real interview experiences — all in one place.';
@@ -27,7 +28,9 @@ export default function HomePage() {
             {description}
           </p>
 
-          <div className="mx-auto mt-9 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+          <GlobalSearchBar className="mx-auto mt-9 max-w-[47rem] text-left" />
+
+          <div className="mx-auto mt-6 flex w-full max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
             <Link
               className={buttonStyles({
                 size: 'lg',

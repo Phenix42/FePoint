@@ -2,24 +2,32 @@ import { describe, expect, it } from 'vitest';
 import { dsaPatterns } from '@/content/dsa/dsaPatterns';
 import { dsaProblems } from '@/content/dsa/dsaProblems';
 import { glossaryTerms } from '@/content/glossary/glossaryTerms';
-import { urlNavigationLesson } from '@/content/lessons/browser/urlNavigationLesson';
 import { practiceQuestions } from '@/content/practice/practiceQuestionBank';
 import { systemDesignLearningTopics } from '@/content/system-design/systemDesignTopics';
+import { frontendCurriculum } from '@/data/frontendCurriculum';
 import { systemDesignCases } from '@/data/systemDesign';
 import { tutorials } from '@/data/tutorials';
+import { tutorialSchema } from '@/schemas/contentSchemas';
 
 const hasUniqueIds = (items: Array<{ id: string }>) =>
   new Set(items.map((item) => item.id)).size === items.length;
 
 describe('content collections', () => {
-  it('ships the first-release curriculum counts with unique identifiers', () => {
+  it('ships the authored frontend course and keeps collection identifiers unique', () => {
+    const manifestLessonCount = frontendCurriculum.reduce(
+      (total, category) => total + category.lessons.length,
+      0,
+    );
+
+    expect(tutorials).toHaveLength(manifestLessonCount);
+    expect(tutorials).toHaveLength(29);
     expect(glossaryTerms).toHaveLength(51);
-    expect(tutorials.length).toBeGreaterThanOrEqual(640);
-    expect(practiceQuestions.length).toBeGreaterThanOrEqual(1000);
+    expect(practiceQuestions.length).toBeGreaterThanOrEqual(300);
     expect(dsaPatterns).toHaveLength(10);
     expect(dsaProblems).toHaveLength(25);
     expect(systemDesignCases.length).toBeGreaterThanOrEqual(30);
     expect(systemDesignLearningTopics.length).toBeGreaterThanOrEqual(20);
+
     for (const collection of [
       glossaryTerms,
       tutorials,
@@ -33,25 +41,33 @@ describe('content collections', () => {
     }
   });
 
-  it('ships original plain-English coverage for the new preparation tracks', () => {
-    const sourceCategories = new Set([
-      'interview-preparation',
-      'machine-coding-guide',
-      'javascript-coding',
-      'dsa-interview-guide',
-      'framework-fundamentals',
-    ]);
-    const sourceTutorials = tutorials.filter((tutorial) => sourceCategories.has(tutorial.category));
+  it('validates every lesson against the standard content structure', () => {
+    for (const tutorial of tutorials) {
+      expect(tutorialSchema.safeParse(tutorial).success, tutorial.slug).toBe(true);
+      expect(tutorial.definition.length).toBeGreaterThanOrEqual(25);
+      expect(tutorial.example.walkthrough.length).toBeGreaterThan(0);
+      expect(tutorial.realWorldExample.steps.length).toBeGreaterThanOrEqual(2);
+      expect(tutorial.keyPoints.length).toBeGreaterThanOrEqual(3);
+      expect(tutorial.interviewQuestions.some((question) => question.level === 'Basic')).toBe(true);
+      expect(
+        tutorial.interviewQuestions.some((question) => question.level === 'Intermediate'),
+      ).toBe(true);
+      expect(tutorial.sources.every((source) => source.url.startsWith('https://'))).toBe(true);
+    }
+  });
 
-    expect(sourceTutorials.length).toBeGreaterThanOrEqual(90);
-    expect(
-      sourceTutorials.every(
-        (tutorial) =>
-          tutorial.sections[0]?.title === 'In plain English' &&
-          (tutorial.sections[0]?.content.length ?? 0) >= 60 &&
-          tutorial.practiceExercises.every((exercise) => exercise.length >= 20),
-      ),
-    ).toBe(true);
+  it('keeps the manifest, route order, and lesson relationships connected', () => {
+    const manifestRoutes = frontendCurriculum.flatMap((category) =>
+      category.lessons.map((lesson) => `${category.id}/${lesson.slug}`),
+    );
+    const tutorialRoutes = tutorials.map((tutorial) => `${tutorial.category}/${tutorial.slug}`);
+    const slugs = new Set(tutorials.map((tutorial) => tutorial.slug));
+
+    expect(tutorialRoutes).toEqual(manifestRoutes);
+    expect(tutorials.map((tutorial) => tutorial.order)).toEqual(tutorials.map((_, index) => index));
+    for (const tutorial of tutorials) {
+      expect(tutorial.relatedSlugs.every((slug) => slugs.has(slug))).toBe(true);
+    }
   });
 
   it('keeps every pattern practice link inside the local problem library', () => {
@@ -63,9 +79,7 @@ describe('content collections', () => {
     }
   });
 
-  it('validates the progressive URL-navigation lesson and rich question fields', () => {
-    expect(urlNavigationLesson.sections).toHaveLength(6);
-    expect(urlNavigationLesson.revisionNotes.length).toBeGreaterThanOrEqual(5);
+  it('keeps rich explanations on the independent practice bank', () => {
     expect(
       practiceQuestions.every(
         (question) =>
@@ -74,31 +88,5 @@ describe('content collections', () => {
           question.whyWrong.length >= 15,
       ),
     ).toBe(true);
-  });
-
-  it('meets the planned practice coverage by subject', () => {
-    const counts = practiceQuestions.reduce<Record<string, number>>((totals, question) => {
-      totals[question.category] = (totals[question.category] ?? 0) + 1;
-      return totals;
-    }, {});
-    const minimums: Record<string, number> = {
-      'Browser and internet': 40,
-      HTML: 50,
-      CSS: 75,
-      JavaScript: 150,
-      TypeScript: 60,
-      React: 100,
-      'Next.js': 60,
-      Testing: 40,
-      Performance: 40,
-      Accessibility: 30,
-      Security: 30,
-      'Frontend system design': 75,
-      DSA: 150,
-      'Machine coding': 50,
-    };
-    for (const [category, minimum] of Object.entries(minimums)) {
-      expect(counts[category], category).toBeGreaterThanOrEqual(minimum);
-    }
   });
 });

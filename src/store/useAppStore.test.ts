@@ -21,11 +21,11 @@ describe('local progress store', () => {
 
   it('toggles bookmarks without duplicates', () => {
     const bookmark = {
-      contentId: 'closures',
+      contentId: 'tutorial-javascript-functions-and-scope',
       type: 'tutorial' as const,
-      title: 'Closures',
-      description: 'Lexical environments',
-      url: '/tutorials/javascript/closures',
+      title: 'Functions and Scope',
+      description: 'Reusable behavior and lexical scope',
+      url: '/tutorials/javascript/functions-and-scope',
     };
     useAppStore.getState().toggleBookmark(bookmark);
     expect(useAppStore.getState().bookmarks).toHaveLength(1);
@@ -34,26 +34,32 @@ describe('local progress store', () => {
   });
 
   it('tracks completion and roadmap progress independently', () => {
-    useAppStore.getState().toggleCompleted('tutorial', 'closures');
-    useAppStore.getState().toggleRoadmapItem('javascript', 'Closures');
-    expect(useAppStore.getState().completed['tutorial:closures']).toBe(true);
-    expect(useAppStore.getState().roadmapCompleted['javascript:Closures']).toBe(true);
+    useAppStore.getState().toggleCompleted('tutorial', 'tutorial-javascript-functions-and-scope');
+    useAppStore.getState().toggleRoadmapItem('javascript', 'Functions and Scope');
+    expect(
+      useAppStore.getState().completed['tutorial:tutorial-javascript-functions-and-scope'],
+    ).toBe(true);
+    expect(useAppStore.getState().roadmapCompleted['javascript:Functions and Scope']).toBe(true);
   });
 
   it('exports and imports a validated progress snapshot', () => {
-    useAppStore.getState().toggleCompleted('tutorial', 'closures');
+    useAppStore.getState().toggleCompleted('tutorial', 'tutorial-javascript-functions-and-scope');
     const snapshot = useAppStore.getState().exportSnapshot();
     resetStore();
     const result = useAppStore.getState().importSnapshot(snapshot);
     expect(result.success).toBe(true);
-    expect(useAppStore.getState().completed['tutorial:closures']).toBe(true);
+    expect(
+      useAppStore.getState().completed['tutorial:tutorial-javascript-functions-and-scope'],
+    ).toBe(true);
   });
 
   it('rejects invalid imports without changing current data', () => {
-    useAppStore.getState().toggleCompleted('tutorial', 'closures');
+    useAppStore.getState().toggleCompleted('tutorial', 'tutorial-javascript-functions-and-scope');
     const result = useAppStore.getState().importSnapshot({ completed: 'invalid' });
     expect(result.success).toBe(false);
-    expect(useAppStore.getState().completed['tutorial:closures']).toBe(true);
+    expect(
+      useAppStore.getState().completed['tutorial:tutorial-javascript-functions-and-scope'],
+    ).toBe(true);
   });
 
   it('rejects unrelated objects instead of treating them as an empty legacy export', () => {
@@ -80,10 +86,10 @@ describe('local progress store', () => {
     expect(useAppStore.getState().revisionQueue[0]?.contentType).toBe('dsa-problem');
   });
 
-  it('migrates a legacy progress export without losing completion', () => {
+  it('removes progress for retired tutorials without touching other content', () => {
     const result = useAppStore.getState().importSnapshot({
       bookmarks: [],
-      completed: { 'tutorial:closures': true },
+      completed: { 'tutorial:tutorial-javascript-1': true, 'dsa-problem:dsa-problem-001': true },
       roadmapCompleted: {},
       recentItems: [],
       searchHistory: [],
@@ -91,7 +97,8 @@ describe('local progress store', () => {
       readingProgress: {},
     });
     expect(result.success).toBe(true);
-    expect(useAppStore.getState().completed['tutorial:closures']).toBe(true);
+    expect(useAppStore.getState().completed['tutorial:tutorial-javascript-1']).toBeUndefined();
+    expect(useAppStore.getState().completed['dsa-problem:dsa-problem-001']).toBe(true);
     expect(useAppStore.getState().practiceAttempts).toEqual({});
   });
 });

@@ -13,8 +13,8 @@ export const siteConfig = {
   logoUrl: assetBase + 'fepoint-logo.svg',
   iconUrl: assetBase + 'fepoint-icon.svg',
   stats: [
-    { value: '640+', label: 'Tutorials' },
-    { value: '1,000+', label: 'Practice questions' },
+    { value: '29', label: 'Guided lessons' },
+    { value: '400+', label: 'Practice questions' },
     { value: '25', label: 'DSA walkthroughs' },
     { value: '34', label: 'System design cases' },
     { value: 'Free', label: 'Forever' },

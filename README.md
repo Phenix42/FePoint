@@ -6,10 +6,10 @@ All personal data stays in browser `localStorage`. There is no backend, authenti
 
 ## Highlights
 
-- Interactive 102-topic learning roadmap across eight stages
-- 640+ typed tutorial records across 21 modules, including beginner fundamentals, interview planning, machine coding, JavaScript implementation exercises, frontend DSA, and framework comparisons
-- Documentation-style lesson reader with progressive Simple/Developer/Interview/Advanced explanations, MDX, terminology popovers, line-by-line code walkthroughs, reading progress, and related lessons
-- Validated 1,000+ question practice engine with browse, topic-test, random, Daily 10, timed, wrong-answer, and revision modes
+- Interactive 29-lesson learning roadmap across 13 ordered stages
+- 29 connected, schema-validated lessons from web fundamentals through frontend system design, each with explained examples and interview answers
+- Documentation-style lesson reader with a consistent Definition → Explanation → Example → Revision → Interview structure, explained code, collapsed answers, reading progress, and global previous/next navigation
+- Validated 400+ question practice engine with browse, topic-test, random, Daily 10, timed, wrong-answer, and revision modes
 - Beginner-friendly glossary with 51 connected terms, plain definitions, technical detail, and analogies
 - DSA for Frontend roadmap with 12 foundations, 10 recognition patterns, and 25 worked problems in JavaScript and TypeScript
 - Interview question bank with technology, difficulty, company, and question-type filters
@@ -76,7 +76,7 @@ npm run generate:sitemap # Regenerate public/sitemap.xml
 | ------------------------- | --------------------------------------------- | -------------------------------------- |
 | `VITE_SITE_URL`           | Canonical production URL and sitemap base     | `https://fepoint.example.com`          |
 | `VITE_GITHUB_URL`         | Repository and contribution links             | Placeholder repository                 |
-| `VITE_DISCORD_URL`        | Discord link shown beside the theme control    | Discord homepage                        |
+| `VITE_DISCORD_URL`        | Discord link shown beside the theme control   | Discord homepage                       |
 | `VITE_FORMSPREE_ENDPOINT` | Optional contact-form endpoint                | Empty; form runs in demonstration mode |
 | `VITE_BASE_PATH`          | Deployment base path, mainly for GitHub Pages | `/`                                    |
 
@@ -173,7 +173,7 @@ The monochrome FEPoint artwork is stored as scalable SVG files in `public/fepoin
 5. Verify search results and direct routes.
 6. Run `npm run validate:content`, lint, tests, and the production build.
 
-Lesson content supports learning objectives, MDX, four explanation depths, terminology, analogies, walkthroughs, visual stages, mistakes, edge cases, performance, exercises, mini projects, revision notes, and metadata. Large collections stay outside page components and are parsed through strict Zod schemas.
+Lesson content follows one schema-validated contract: learning objectives, a short definition, what/why/how/where explanations, explained code and output, a real-world scenario, optional process flow, key points, genuine mistakes, collapsed interview answers, and authoritative source metadata. The JSON curriculum manifest keeps course navigation, the roadmap, and sitemap routes aligned.
 
 ## Testing
 

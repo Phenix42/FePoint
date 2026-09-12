@@ -1,0 +1,150 @@
+[
+  {
+    "id": "web-fundamentals",
+    "label": "Web Fundamentals",
+    "navigationLabel": "Web Fundamentals",
+    "stage": "Beginner",
+    "description": "Understand the web, the request journey, and the browser before writing code.",
+    "estimatedWeeks": 1,
+    "lessons": [
+      { "slug": "what-is-the-web", "title": "What is the Web?" },
+      { "slug": "how-websites-work", "title": "How Websites Work" },
+      { "slug": "browser-client-server", "title": "Browsers, Clients, and Servers" }
+    ]
+  },
+  {
+    "id": "html",
+    "label": "HTML",
+    "navigationLabel": "HTML",
+    "stage": "Beginner",
+    "description": "Give webpages meaningful structure that browsers and people can understand.",
+    "estimatedWeeks": 1,
+    "lessons": [
+      { "slug": "html-fundamentals", "title": "HTML Fundamentals" },
+      {
+        "slug": "html-elements-and-semantics",
+        "title": "HTML Elements and Semantic Structure"
+      }
+    ]
+  },
+  {
+    "id": "css",
+    "label": "CSS",
+    "navigationLabel": "CSS",
+    "stage": "Beginner",
+    "description": "Style, lay out, and adapt the HTML structure across different screens.",
+    "estimatedWeeks": 2,
+    "lessons": [{ "slug": "css-fundamentals", "title": "CSS Fundamentals" }]
+  },
+  {
+    "id": "javascript",
+    "label": "JavaScript",
+    "navigationLabel": "JavaScript",
+    "stage": "Beginner",
+    "description": "Learn programming one connected concept at a time, then use it in the browser.",
+    "estimatedWeeks": 7,
+    "lessons": [
+      { "slug": "javascript-fundamentals", "title": "JavaScript Fundamentals" },
+      { "slug": "variables", "title": "Variables" },
+      { "slug": "data-types", "title": "Data Types" },
+      { "slug": "operators", "title": "Operators" },
+      { "slug": "conditions", "title": "Conditions" },
+      { "slug": "loops", "title": "Loops" },
+      { "slug": "functions-and-scope", "title": "Functions and Scope" },
+      { "slug": "arrays-and-objects", "title": "Arrays and Objects" },
+      { "slug": "dom", "title": "DOM" },
+      { "slug": "events", "title": "Events" },
+      { "slug": "async-javascript", "title": "Async JavaScript" },
+      { "slug": "apis-and-fetch", "title": "APIs and Fetch" }
+    ]
+  },
+  {
+    "id": "frontend-tooling",
+    "label": "Frontend Tooling",
+    "navigationLabel": "Frontend Tooling",
+    "stage": "Intermediate",
+    "description": "Use packages, project scripts, version control, and development tools safely.",
+    "estimatedWeeks": 1,
+    "lessons": [
+      { "slug": "frontend-tooling-fundamentals", "title": "Frontend Tooling Fundamentals" }
+    ]
+  },
+  {
+    "id": "typescript",
+    "label": "TypeScript",
+    "navigationLabel": "TypeScript",
+    "stage": "Intermediate",
+    "description": "Describe JavaScript values with types and catch mistakes before runtime.",
+    "estimatedWeeks": 2,
+    "lessons": [{ "slug": "typescript-fundamentals", "title": "TypeScript Fundamentals" }]
+  },
+  {
+    "id": "react",
+    "label": "React",
+    "navigationLabel": "React",
+    "stage": "Intermediate",
+    "description": "Build component-based interfaces with predictable data and interactions.",
+    "estimatedWeeks": 4,
+    "lessons": [
+      { "slug": "react-fundamentals", "title": "React Fundamentals" },
+      { "slug": "advanced-react", "title": "Advanced React" }
+    ]
+  },
+  {
+    "id": "nextjs",
+    "label": "Next.js",
+    "navigationLabel": "Next.js",
+    "stage": "Intermediate",
+    "description": "Build complete React applications with routing, server rendering, and deployment.",
+    "estimatedWeeks": 3,
+    "lessons": [{ "slug": "nextjs-fundamentals", "title": "Next.js Fundamentals" }]
+  },
+  {
+    "id": "performance",
+    "label": "Frontend Performance",
+    "navigationLabel": "Performance",
+    "stage": "Advanced",
+    "description": "Measure user experience and reduce loading, rendering, and interaction delays.",
+    "estimatedWeeks": 2,
+    "lessons": [{ "slug": "frontend-performance", "title": "Frontend Performance" }]
+  },
+  {
+    "id": "testing",
+    "label": "Frontend Testing",
+    "navigationLabel": "Testing",
+    "stage": "Advanced",
+    "description": "Verify behavior with focused, integration, and end-to-end tests.",
+    "estimatedWeeks": 2,
+    "lessons": [{ "slug": "frontend-testing", "title": "Frontend Testing" }]
+  },
+  {
+    "id": "security",
+    "label": "Frontend Security",
+    "navigationLabel": "Security",
+    "stage": "Advanced",
+    "description": "Recognize browser threats and protect data across every trust boundary.",
+    "estimatedWeeks": 2,
+    "lessons": [{ "slug": "frontend-security", "title": "Frontend Security" }]
+  },
+  {
+    "id": "advanced-frontend",
+    "label": "Advanced Frontend",
+    "navigationLabel": "Advanced Frontend",
+    "stage": "Advanced",
+    "description": "Design inclusive applications and maintainable frontend architecture.",
+    "estimatedWeeks": 3,
+    "lessons": [
+      { "slug": "accessibility", "title": "Frontend Accessibility" },
+      { "slug": "frontend-architecture", "title": "Frontend Architecture" }
+    ]
+  },
+  {
+    "id": "system-design",
+    "label": "Frontend System Design",
+    "navigationLabel": "Frontend System Design",
+    "stage": "Interview Ready",
+    "description": "Turn requirements into scalable frontend systems and explain the trade-offs.",
+    "estimatedWeeks": 3,
+    "lessons": [{ "slug": "frontend-system-design", "title": "Frontend System Design" }]
+  }
+]
