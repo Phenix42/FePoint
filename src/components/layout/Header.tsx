@@ -60,12 +60,6 @@ const navigationItems: NavigationItem[] = [
     matches: (pathname) => pathname.startsWith('/contribute'),
   },
   {
-    label: 'Interview Trail',
-    href: '/interview-trail',
-    icon: PenLine,
-    matches: (pathname) => pathname.startsWith('/interview-trail'),
-  },
-  {
     label: 'Book a Mock Interview',
     href: '/contact',
     icon: CalendarCheck2,
